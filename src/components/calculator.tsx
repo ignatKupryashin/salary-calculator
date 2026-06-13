@@ -3,7 +3,7 @@ import { InputNumber, type InputNumberValueChangeEvent } from 'primereact/inputn
 import { Divider } from 'primereact/divider'
 import { INCOME_TAX_RATES } from '../consts'
 import { calculateTax } from '../services'
-import { useExchangeRates } from '../hooks/useExchangeRates'
+import CurrencyEquivalent from './CurrencyEquivalent'
 import styles from './calculator.module.scss'
 
 const BRACKET_COLORS = ['#22c55e', '#eab308', '#f97316', '#ef4444', '#dc2626']
@@ -15,16 +15,8 @@ const fmt = (n: number) =>
         maximumFractionDigits: 0,
     }).format(n)
 
-const fmtFx = (n: number, currency: string) =>
-    new Intl.NumberFormat('ru-RU', {
-        style: 'currency',
-        currency,
-        maximumFractionDigits: 0,
-    }).format(n)
-
 const Calculator: FC = () => {
     const [monthly, setMonthly] = useState(0)
-    const { rates, loading: ratesLoading, error: ratesError } = useExchangeRates()
 
     const yearIncome = useMemo(() => monthly * 12, [monthly])
 
@@ -143,57 +135,7 @@ const Calculator: FC = () => {
             <Divider className={styles.divider} />
 
             {/* ── Currency equivalent ──────────────────────── */}
-            <section className={styles.section}>
-                <p className={styles.sectionLabel}>
-                    <i className="pi pi-globe" />
-                    В валюте
-                    {rates && (
-                        <span className={styles.rateDate}>
-                            курс ЦБ на {rates.date}
-                        </span>
-                    )}
-                </p>
-
-                {ratesLoading && (
-                    <p className={styles.fxStatus}>Загрузка курсов…</p>
-                )}
-                {ratesError && (
-                    <p className={styles.fxError}>
-                        <i className="pi pi-exclamation-triangle" />
-                        {ratesError}
-                    </p>
-                )}
-                {rates && (
-                    <div className={styles.fxGrid}>
-                        <div className={styles.fxCard}>
-                            <span className={styles.fxCurrency}>🇺🇸 USD</span>
-                            <div className={styles.fxAmounts}>
-                                <span className={styles.fxAmount}>
-                                    {fmtFx(netMonth / rates.USD, 'USD')}
-                                    <span className={styles.fxPeriod}>/мес</span>
-                                </span>
-                                <span className={`${styles.fxAmount} ${styles.fxYear}`}>
-                                    {fmtFx(netYear / rates.USD, 'USD')}
-                                    <span className={styles.fxPeriod}>/год</span>
-                                </span>
-                            </div>
-                        </div>
-                        <div className={styles.fxCard}>
-                            <span className={styles.fxCurrency}>🇪🇺 EUR</span>
-                            <div className={styles.fxAmounts}>
-                                <span className={styles.fxAmount}>
-                                    {fmtFx(netMonth / rates.EUR, 'EUR')}
-                                    <span className={styles.fxPeriod}>/мес</span>
-                                </span>
-                                <span className={`${styles.fxAmount} ${styles.fxYear}`}>
-                                    {fmtFx(netYear / rates.EUR, 'EUR')}
-                                    <span className={styles.fxPeriod}>/год</span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                )}
-            </section>
+            <CurrencyEquivalent netMonth={netMonth} netYear={netYear} />
         </div>
     )
 }
