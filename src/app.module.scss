@@ -1,0 +1,60 @@
+.app {
+    min-height: 100vh;
+    background-color: var(--app-bg);
+    transition: background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem 1.5rem;
+    background: var(--header-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+    user-select: none;
+
+    i {
+        font-size: 1.2rem;
+        color: var(--accent);
+    }
+}
+
+.themeBtn {
+    color: var(--text-secondary) !important;
+    transition: color 0.2s ease, background 0.2s ease !important;
+
+    &:hover {
+        color: var(--text-primary) !important;
+        background: var(--surface-hover) !important;
+    }
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2.5rem 1rem;
+
+    @media (max-width: 600px) {
+        padding: 1rem 0.75rem 2rem;
+    }
+}

@@ -1,0 +1,226 @@
+.card {
+    width: 100%;
+    max-width: 520px;
+    background: var(--surface-a, #ffffff);
+    border-radius: 1.25rem;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ── Sections ───────────────────────────────────────── */
+
+.section {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+
+    @media (max-width: 480px) {
+        padding: 1.25rem 1rem;
+    }
+}
+
+.sectionLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+
+    i {
+        font-size: 0.75rem;
+    }
+}
+
+.divider {
+    margin: 0 !important;
+
+    &:global(.p-divider) {
+        margin: 0 !important;
+    }
+}
+
+/* ── Income input ───────────────────────────────────── */
+
+.inputWrapper {
+    width: 100% !important;
+}
+
+.input {
+    width: 100% !important;
+    font-size: 2rem !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+    padding: 0.625rem 0.875rem !important;
+    border-radius: 0.75rem !important;
+    border: 2px solid var(--border-color) !important;
+    background: transparent !important;
+    color: var(--text-primary) !important;
+    transition: border-color 0.2s ease !important;
+
+    &:focus {
+        border-color: var(--accent) !important;
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent) !important;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 1.5rem !important;
+    }
+}
+
+.annualHint {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+
+    strong {
+        color: var(--text-primary);
+    }
+}
+
+/* ── Tax brackets ───────────────────────────────────── */
+
+.brackets {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+}
+
+.bracketRow {
+    display: grid;
+    grid-template-columns: 2.75rem 1fr auto;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.rate {
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.barTrack {
+    height: 6px;
+    border-radius: 99px;
+    background: var(--bar-track);
+    overflow: hidden;
+}
+
+.barFill {
+    height: 100%;
+    border-radius: 99px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bracketValue {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    min-width: 8rem;
+
+    @media (max-width: 400px) {
+        min-width: 6.5rem;
+        font-size: 0.75rem;
+    }
+}
+
+.totalRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    background: var(--result-bg);
+    border: 1px solid var(--result-border);
+    border-radius: 0.75rem;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.totalLabel {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.totalRight {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.totalValue {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.rateChip {
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: 99px;
+    background: color-mix(in srgb, var(--accent) 15%, transparent);
+    color: var(--accent);
+    white-space: nowrap;
+}
+
+/* ── Net income results ─────────────────────────────── */
+
+.results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+
+    @media (max-width: 400px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.resultCard {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 1rem 1.125rem;
+    background: var(--result-bg);
+    border: 1px solid var(--result-border);
+    border-radius: 0.875rem;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.resultPeriod {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+}
+
+.resultAmount {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.15;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+
+    @media (max-width: 480px) {
+        font-size: 1.2rem;
+    }
+}
+
+.yearAmount {
+    font-size: 1.1rem;
+
+    @media (max-width: 480px) {
+        font-size: 1rem;
+    }
+}
