@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useState } from 'react'
 import { PrimeReactProvider } from 'primereact/api'
 import { Button } from 'primereact/button'
+import { TabView, TabPanel } from 'primereact/tabview'
 import Calculator from './components/calculator.tsx'
+import LoanCalculator from './components/loanCalculator/LoanCalculator.tsx'
 import { type ThemeMode, applyPrimeTheme, getInitialTheme, resolveIsDark, saveTheme } from './theme.ts'
 import styles from './app.module.scss'
 
@@ -46,8 +48,8 @@ const App = () => {
             <div className={styles.app} data-theme={isDark ? 'dark' : 'light'}>
                 <header className={styles.header}>
                     <div className={styles.logo}>
-                        <i className="pi pi-percentage" />
-                        <span>Калькулятор НДФЛ</span>
+                        <i className="pi pi-calculator" />
+                        <span>Калькуляторы</span>
                     </div>
                     <Button
                         icon={THEME_ICONS[mode]}
@@ -59,7 +61,14 @@ const App = () => {
                     />
                 </header>
                 <main className={styles.main}>
-                    <Calculator />
+                    <TabView className={styles.tabs}>
+                        <TabPanel header="НДФЛ" leftIcon="pi pi-percentage mr-2">
+                            <Calculator />
+                        </TabPanel>
+                        <TabPanel header="Кредит" leftIcon="pi pi-credit-card mr-2">
+                            <LoanCalculator isDark={isDark} />
+                        </TabPanel>
+                    </TabView>
                 </main>
             </div>
         </PrimeReactProvider>

@@ -58,3 +58,45 @@
         padding: 1rem 0.75rem 2rem;
     }
 }
+
+.tabs {
+    width: 100%;
+    max-width: 900px;
+
+    :global(.p-tabview-nav-container) {
+        background: transparent;
+    }
+
+    :global(.p-tabview-nav) {
+        background: transparent;
+        border-color: var(--border-color);
+    }
+
+    :global(.p-tabview-nav-link) {
+        color: var(--text-secondary) !important;
+        background: transparent !important;
+        border-color: transparent !important;
+        font-weight: 600;
+        font-size: 0.9rem;
+        gap: 0.4rem;
+        padding: 1rem;
+
+        &:not(.p-disabled):focus {
+            box-shadow: none !important;
+        }
+    }
+
+    :global(.p-highlight .p-tabview-nav-link) {
+        color: var(--accent) !important;
+        border-bottom-color: var(--accent) !important;
+    }
+
+    :global(.p-tabview-panels) {
+        background: transparent !important;
+        padding: 1.5rem 0 0;
+    }
+
+    &__item {
+        padding: 1rem;
+    }
+}
