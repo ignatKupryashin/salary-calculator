@@ -3,8 +3,9 @@ import {ThemeProvider} from './providers/ThemeProvider.tsx'
 import AppLayout from './components/layout/AppLayout.tsx'
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 
+const queryClient = new QueryClient()
+
 const App = () => {
-    const queryClient = new QueryClient()
     return (
         <QueryClientProvider client={queryClient}>
             <PrimeReactProvider>

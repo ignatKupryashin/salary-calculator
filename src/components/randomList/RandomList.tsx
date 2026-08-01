@@ -11,14 +11,13 @@ const RandomList = () => {
         return res.json()
     }
 
-    const { data, isFetching, isPending } = useQuery({
+    const { data, isPending } = useQuery({
         queryKey: ['myList'],
-        initialData: [],
         queryFn: getList,
-        
+        staleTime: 60_000,
     })
 
-    if (isFetching || isPending) {
+    if (isPending) {
         return (
             <div>
                 <h2>Загружается</h2>
@@ -29,7 +28,7 @@ const RandomList = () => {
     return (
         <div>
             <ul>
-                {data.map(post => (
+                {data?.map(post => (
                     <li key={post.id}>{post.title}</li>
                 ))}
             </ul>
