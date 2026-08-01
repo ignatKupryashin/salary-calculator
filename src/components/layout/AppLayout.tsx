@@ -1,10 +1,10 @@
 import { TabView, TabPanel } from 'primereact/tabview'
 import Calculator from '../salaryCalculator/calculator.tsx'
 import LoanCalculator from '../loanCalculator/LoanCalculator.tsx'
-import RandomList from '../randomList/RandomList.tsx'
 import { useTheme } from '../../providers/ThemeProvider.tsx'
 import AppHeader from './AppHeader.tsx'
 import styles from '../../app.module.scss'
+import RandomList from "../randomList/RandomList.tsx";
 
 const AppLayout = () => {
     const { isDark } = useTheme()
@@ -20,7 +20,7 @@ const AppLayout = () => {
                     <TabPanel header="Кредит" leftIcon="pi pi-credit-card mr-2">
                         <LoanCalculator />
                     </TabPanel>
-                    <TabPanel header="Изучение ReactQuery" leftIcon="pi pi-list mr-2">
+                    <TabPanel header="Изучение ReactQuery" leftIcon="pi pi-credit-card mr-2">
                         <RandomList />
                     </TabPanel>
                 </TabView>
