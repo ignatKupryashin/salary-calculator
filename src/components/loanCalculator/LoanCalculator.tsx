@@ -16,6 +16,7 @@ import { DataTable } from 'primereact/datatable'
 import { Column } from 'primereact/column'
 import { calculateLoan } from '../../services'
 import type { PaymentType, TermUnit } from '../../models/loan'
+import { useTheme } from '../../providers/ThemeProvider.tsx'
 import styles from './loanCalculator.module.scss'
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend)
@@ -42,11 +43,8 @@ const fmtCurrency = (n: number) =>
 const fmtDate = (d: Date) =>
     new Intl.DateTimeFormat('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' }).format(d)
 
-interface Props {
-    isDark: boolean
-}
-
-const LoanCalculator: FC<Props> = ({ isDark }) => {
+const LoanCalculator: FC = () => {
+    const { isDark } = useTheme()
     const [principal, setPrincipal] = useState(0)
     const [annualRate, setAnnualRate] = useState(0)
     const [term, setTerm] = useState(12)

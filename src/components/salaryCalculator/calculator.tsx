@@ -1,9 +1,9 @@
 import { type FC, useMemo, useState } from 'react'
 import { InputNumber, type InputNumberValueChangeEvent } from 'primereact/inputnumber'
 import { Divider } from 'primereact/divider'
-import { INCOME_TAX_RATES } from '../consts'
-import { calculateTax } from '../services'
-import CurrencyEquivalent from './CurrencyEquivalent'
+import { INCOME_TAX_RATES } from '../../consts'
+import { calculateTax } from '../../services'
+import CurrencyEquivalent from '../CurrencyEquivalent'
 import styles from './calculator.module.scss'
 
 const BRACKET_COLORS = ['#22c55e', '#eab308', '#f97316', '#ef4444', '#dc2626']

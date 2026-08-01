@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.101.4",
+    "@tanstack/react-query-devtools": "^5.101.4",
     "chart.js": "^4.5.1",
     "primeflex": "^4.0.0",
     "primeicons": "^7.0.0",
