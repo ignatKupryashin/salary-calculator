@@ -1,25 +1,20 @@
-import { useEffect, useState } from 'react'
-import { fetchExchangeRates, type ExchangeRates } from '../services'
+import { useQuery } from '@tanstack/react-query'
+import { fetchExchangeRates } from '../services'
 
-interface UseExchangeRatesResult {
-    rates: ExchangeRates | null
-    loading: boolean
-    error: string | null
-}
+export function useExchangeRates() {
+    const { data: rates = null, isPending: loading, error } = useQuery({
+        queryKey: ['exchangeRates'],
+        queryFn: fetchExchangeRates,
+        staleTime: 24 * 60 * 60 * 1000, // курсы ЦБ обновляются раз в день
+    })
 
-export function useExchangeRates(): UseExchangeRatesResult {
-    const [rates, setRates] = useState<ExchangeRates | null>(null)
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState<string | null>(null)
-
-    useEffect(() => {
-        fetchExchangeRates()
-            .then(setRates)
-            .catch((e: unknown) =>
-                setError(e instanceof Error ? e.message : 'Ошибка загрузки курсов')
-            )
-            .finally(() => setLoading(false))
-    }, [])
-
-    return { rates, loading, error }
+    return {
+        rates,
+        loading,
+        error: error
+            ? error instanceof Error
+                ? error.message
+                : 'Ошибка загрузки курсов'
+            : null,
+    }
 }
