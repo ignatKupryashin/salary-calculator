@@ -1,73 +1,39 @@
-# React + TypeScript + Vite
+# Калькуляторы
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Веб-приложение с калькуляторами: НДФЛ по прогрессивной шкале и кредитный калькулятор.
 
-Currently, two official plugins are available:
+Стек: React, TypeScript, Vite, PrimeReact, TanStack Query.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Запуск
 
-## React Compiler
+Требуется Node.js.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+# установка зависимостей
+npm install
 
-## Expanding the ESLint configuration
+# режим разработки (http://localhost:5173)
+npm run dev
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+# продакшен-сборка
+npm run build
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# просмотр собранного приложения
+npm run preview
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Вкладки
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### НДФЛ
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Калькулятор подоходного налога:
+
+- ввод зарплаты до вычета налогов (в месяц);
+- расчёт годового дохода и налога по прогрессивной шкале НДФЛ;
+- разбивка налога по ставкам, итоговая сумма и эффективная ставка;
+- сумма «на руки» за месяц и за год;
+- эквивалент в валюте по курсу ЦБ РФ.
+
+### Кредит — в разработке
+
+Кредитный калькулятор (аннуитетный и дифференцированный платёж, график выплат, диаграмма). Функциональность ещё дорабатывается.

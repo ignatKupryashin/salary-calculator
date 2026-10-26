@@ -4,7 +4,6 @@ import LoanCalculator from '../loanCalculator/LoanCalculator.tsx'
 import { useTheme } from '../../providers/ThemeProvider.tsx'
 import AppHeader from './AppHeader.tsx'
 import styles from '../../app.module.scss'
-import RandomList from "../randomList/RandomList.tsx";
 
 const AppLayout = () => {
     const { isDark } = useTheme()
@@ -19,9 +18,6 @@ const AppLayout = () => {
                     </TabPanel>
                     <TabPanel header="Кредит" leftIcon="pi pi-credit-card mr-2">
                         <LoanCalculator />
-                    </TabPanel>
-                    <TabPanel header="Изучение ReactQuery" leftIcon="pi pi-credit-card mr-2">
-                        <RandomList />
                     </TabPanel>
                 </TabView>
             </main>
